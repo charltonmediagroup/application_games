@@ -269,9 +269,8 @@ export default function App() {
       {screen==="intro"&&(
         <div style={{textAlign:"center",padding:"28px 16px"}}>
           <div style={{fontSize:48,marginBottom:4,animation:"float 2s ease-in-out infinite"}}>{"\u{1f4de}"}</div>
-          <h1 style={{fontSize:22,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Events associate</h1>
-          <p style={{fontSize:12,color:"#888",marginBottom:2}}>Screening assessment</p>
-          <p style={{color:"#999",fontSize:12,lineHeight:1.6,marginBottom:20}}>4 games testing key cognitive traits</p>
+          <h1 style={{fontSize:22,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Screening Assessment</h1>
+          <p style={{color:"#999",fontSize:12,lineHeight:1.6,marginBottom:20}}>Take the four games to test your key applicant's traits</p>
           <div style={{display:"flex",flexDirection:"column",gap:6,marginBottom:24}}>
             {GAMES.map(function(g,i){return(<div key={g.id} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 14px",borderRadius:12,background:g.bg,animation:"popIn 0.4s ease "+(i*0.08)+"s both"}}><span style={{fontSize:20}}>{g.icon}</span><div style={{flex:1,textAlign:"left"}}><div style={{fontWeight:600,fontSize:13,color:g.color}}>{g.label}</div></div></div>);})}
           </div>
@@ -412,9 +411,15 @@ export default function App() {
 
           {/* ═══ INFO SCAN ═══ */}
           {game.id==="scan"&&sub==="practice_intro"&&(
-            <div style={{textAlign:"center",padding:"24px 16px",animation:"popIn 0.3s ease"}}>
-              <div style={{fontSize:40,marginBottom:8}}>{"\u{1f3af}"}</div>
-              <h2 style={{fontSize:18,fontWeight:700,color:"#1D9E75",marginBottom:16}}>{"Let's practice!"}</h2>
+            <div style={{textAlign:"center",padding:"20px 16px",animation:"popIn 0.3s ease"}}>
+              <p style={{color:"#666",fontSize:14,lineHeight:1.7,marginBottom:16,textAlign:"left",maxWidth:360,margin:"0 auto 16px"}}>This game tests how quickly you can absorb and recall information.</p>
+              <div style={{textAlign:"left",maxWidth:340,margin:"0 auto 16px"}}>
+                <div style={{fontSize:13,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
+                <div style={{display:"flex",flexDirection:"column",gap:6}}>
+                  {["You'll see a company profile on screen","Memorize as many details as you can","Answer questions about the profile from memory","Study time gets shorter with each profile","3 profiles, 2 questions each"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:13,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#E1F5EE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:600,color:"#1D9E75"}}>{i+1}</span><span>{t}</span></div>);})}
+                </div>
+              </div>
+              <p style={{fontSize:12,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
               <button onClick={function(){setSPPh("study");setSPSt(12);setSPQi(0);setSPSc(0);setSPFb(null);setSub("practice");}} style={{padding:"10px 28px",borderRadius:10,background:"#1D9E75",color:"#fff",border:"none",fontWeight:600,fontSize:14,cursor:"pointer"}}>Start practice</button>
             </div>
           )}
@@ -478,9 +483,15 @@ export default function App() {
 
           {/* ═══ SNAP DECISION ═══ */}
           {game.id==="snap"&&sub==="practice_intro"&&(
-            <div style={{textAlign:"center",padding:"24px 16px",animation:"popIn 0.3s ease"}}>
-              <div style={{fontSize:40,marginBottom:8}}>{"\u{1f3af}"}</div>
-              <h2 style={{fontSize:18,fontWeight:700,color:"#D4537E",marginBottom:16}}>{"Let's practice!"}</h2>
+            <div style={{textAlign:"center",padding:"20px 16px",animation:"popIn 0.3s ease"}}>
+              <p style={{color:"#666",fontSize:14,lineHeight:1.7,marginBottom:16,textAlign:"left",maxWidth:360,margin:"0 auto 16px"}}>This game tests how quickly you can assess a situation and choose the best response.</p>
+              <div style={{textAlign:"left",maxWidth:340,margin:"0 auto 16px"}}>
+                <div style={{fontSize:13,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
+                <div style={{display:"flex",flexDirection:"column",gap:6}}>
+                  {["You'll see a realistic sales scenario","Pick the best response from the options","You have 15 seconds per scenario","7 scenarios in total"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:13,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#FBEAF0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:600,color:"#D4537E"}}>{i+1}</span><span>{t}</span></div>);})}
+                </div>
+              </div>
+              <p style={{fontSize:12,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
               <button onClick={function(){setNPFb(null);setNPS(0);setNPOp(shuffle([].concat(SnapPractice.opts)));setSub("sample");}} style={{padding:"10px 28px",borderRadius:10,background:"#D4537E",color:"#fff",border:"none",fontWeight:600,fontSize:14,cursor:"pointer"}}>Start practice</button>
             </div>
           )}
