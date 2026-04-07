@@ -257,7 +257,7 @@ export default function App() {
       {screen==="name"&&(
         <div style={{textAlign:"center",padding:"40px 16px"}}>
           <div style={{fontSize:48,marginBottom:8,animation:"float 2s ease-in-out infinite"}}>{"\u270D\uFE0F"}</div>
-          <h1 style={{fontSize:22,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Welcome</h1>
+          <h1 style={{fontSize:22,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Welcome!!!</h1>
           <p style={{color:"#888",fontSize:13,lineHeight:1.6,marginBottom:20}}>Please enter your name to begin the assessment</p>
           <input value={appName} onChange={function(e){setAppName(e.target.value);}} onKeyDown={function(e){if(e.key==="Enter"&&appName.trim())setScreen("intro");}} placeholder="Your full name" style={{width:"100%",maxWidth:300,padding:"12px 16px",borderRadius:12,border:"2px solid #eee",fontSize:15,outline:"none",textAlign:"center",marginBottom:16,boxSizing:"border-box"}} />
           <br />
