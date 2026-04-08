@@ -235,6 +235,9 @@ export default function App() {
   var wMaxTime=sub==="sample"?15:30;
   var wPct=Math.max((wCurTime/wMaxTime)*100,0);
   var wTClr=wCurTime<=5?"#E24B4A":wCurTime<=10?"#EF9F27":"#534AB7";
+  var wCurLetters=sub==="sample"?WSample.letters:wScr;
+  var wUsedIdx=(function(){var pool=wCurLetters.map(function(l){return l.toLowerCase();});var used=[];var word=wIn.toLowerCase();for(var i=0;i<word.length;i++){var idx=pool.indexOf(word[i]);if(idx!==-1){used.push(idx);pool[idx]=null;}}return used;})();
+  var wTileClick=function(letter,idx){if(wUsedIdx.indexOf(idx)!==-1)return;setWIn(function(w){return w+letter.toLowerCase();});};
   var kPct=Math.max((kTime/90)*100,0);
   var kTClr=kTime<=15?"#E24B4A":kTime<=30?"#EF9F27":"#D85A30";
   var sCurStudy=sub==="practice"?sPSt:sSt;
@@ -257,7 +260,7 @@ export default function App() {
       {screen==="name"&&(
         <div style={{textAlign:"center",padding:"40px 16px"}}>
           <div style={{fontSize:48,marginBottom:8,animation:"float 2s ease-in-out infinite"}}>{"\u270D\uFE0F"}</div>
-          <h1 style={{fontSize:22,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Welcome!</h1>
+          <h1 style={{fontSize:22,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Welcome</h1>
           <p style={{color:"#888",fontSize:13,lineHeight:1.6,marginBottom:20}}>Please enter your name to begin the assessment</p>
           <input value={appName} onChange={function(e){setAppName(e.target.value);}} onKeyDown={function(e){if(e.key==="Enter"&&appName.trim())setScreen("intro");}} placeholder="Your full name" style={{width:"100%",maxWidth:300,padding:"12px 16px",borderRadius:12,border:"2px solid #eee",fontSize:15,outline:"none",textAlign:"center",marginBottom:16,boxSizing:"border-box"}} />
           <br />
@@ -325,10 +328,11 @@ export default function App() {
               </div>
               <div style={{height:5,borderRadius:3,background:"#eee",marginBottom:14}}><div style={{width:wPct+"%",height:"100%",borderRadius:3,background:wTClr,transition:"width 1s linear"}} /></div>
               <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:6,marginBottom:16}}>
-                {(sub==="sample"?WSample.letters:wScr).map(function(l,i){var sz=sub==="sample"?48:42;return <div key={i} style={{width:sz,height:sz,borderRadius:10,background:"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:sub==="sample"?22:18,fontWeight:700,color:"#534AB7"}}>{l}</div>;})}
+                {wCurLetters.map(function(l,i){var sz=sub==="sample"?48:42;var used=wUsedIdx.indexOf(i)!==-1;return <button key={i} onClick={function(){wTileClick(l,i);}} style={{width:sz,height:sz,borderRadius:10,background:used?"#D5D3F5":"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:sub==="sample"?22:18,fontWeight:700,color:used?"#9A95CC":"#534AB7",border:"none",cursor:used?"default":"pointer",opacity:used?0.55:1,transition:"opacity 0.1s,background 0.1s"}}>{l}</button>;})}
               </div>
               <div style={{display:"flex",gap:6,marginBottom:8}}>
                 <input ref={wIRef} value={wIn} onChange={function(e){setWIn(e.target.value);}} onKeyDown={function(e){if(e.key==="Enter")wSubmit();}} placeholder="Type a word..." style={{flex:1,padding:"10px 14px",borderRadius:10,border:wFb==="correct"?"2px solid #1D9E75":(wFb==="wrong"||wFb==="badletters")?"2px solid #E24B4A":"2px solid #eee",fontSize:15,outline:"none",background:"#fff"}} />
+                <button onClick={function(){setWIn(function(w){return w.slice(0,-1);});}} style={{padding:"10px 12px",borderRadius:10,background:"#eee",color:"#555",border:"none",fontWeight:600,fontSize:16,cursor:"pointer"}}>{"⌫"}</button>
                 <button onClick={wSubmit} style={{padding:"10px 18px",borderRadius:10,background:"#534AB7",color:"#fff",border:"none",fontWeight:600,fontSize:14,cursor:"pointer"}}>Go</button>
               </div>
               <div style={{minHeight:20,textAlign:"center",fontSize:12,marginBottom:8}}>
