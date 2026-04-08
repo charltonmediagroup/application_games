@@ -75,11 +75,11 @@ function PC(props) {
   var p=props.p;var fields=[["Industry",p.industry],["HQ",p.hq],["Revenue",p.revenue],["Employees",p.employees],["Region",p.region],["Founded",p.founded]];
   return (<div style={{padding:"16px",borderRadius:14,background:"#fff",boxShadow:"0 4px 16px rgba(0,0,0,0.06)",border:"2px solid #E1F5EE"}}>
     <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
-      <div style={{width:44,height:44,borderRadius:12,background:"#E1F5EE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:20,fontWeight:600,color:"#0F6E56"}}>{p.name.split(" ").map(function(n){return n[0];}).join("")}</div>
-      <div><div style={{fontWeight:600,fontSize:19}}>{p.name}</div><div style={{fontSize:15,color:"#888"}}>{p.title+" \u00b7 "+p.company}</div></div>
+      <div style={{width:44,height:44,borderRadius:12,background:"#E1F5EE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:24,fontWeight:600,color:"#0F6E56"}}>{p.name.split(" ").map(function(n){return n[0];}).join("")}</div>
+      <div><div style={{fontWeight:600,fontSize:20}}>{p.name}</div><div style={{fontSize:16,color:"#888"}}>{p.title+" \u00b7 "+p.company}</div></div>
     </div>
-    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px 14px",fontSize:16}}>
-      {fields.map(function(f){return(<div key={f[0]} style={{padding:"5px 0",borderBottom:"0.5px solid #f0f0ec"}}><span style={{color:"#999",fontSize:14}}>{f[0]}</span><div style={{fontWeight:500}}>{f[1]}</div></div>);})}
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px 14px",fontSize:17}}>
+      {fields.map(function(f){return(<div key={f[0]} style={{padding:"5px 0",borderBottom:"0.5px solid #f0f0ec"}}><span style={{color:"#999",fontSize:15}}>{f[0]}</span><div style={{fontWeight:500}}>{f[1]}</div></div>);})}
     </div>
   </div>);
 }
@@ -248,7 +248,7 @@ export default function App() {
   var nTClr=nTime<=5?"#E24B4A":nTime<=8?"#EF9F27":"#D4537E";
 
   return (
-    <div style={{maxWidth:640,margin:"0 auto",fontFamily:"system-ui"}}>
+    <div style={{maxWidth:900,margin:"0 auto",fontFamily:"system-ui"}}>
       <style>{
         "@keyframes popIn{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}"+
         "@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}"+
@@ -258,26 +258,26 @@ export default function App() {
 
       {/* ═══ NAME INPUT ═══ */}
       {screen==="name"&&(
-        <div style={{textAlign:"center",padding:"56px 32px"}}>
-          <div style={{fontSize:60,marginBottom:8,animation:"float 2s ease-in-out infinite"}}>{"\u270D\uFE0F"}</div>
-          <h1 style={{fontSize:28,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Welcome</h1>
-          <p style={{color:"#888",fontSize:16,lineHeight:1.6,marginBottom:20}}>Please enter your name to begin the assessment</p>
-          <input value={appName} onChange={function(e){setAppName(e.target.value);}} onKeyDown={function(e){if(e.key==="Enter"&&appName.trim())setScreen("intro");}} placeholder="Your full name" style={{width:"100%",maxWidth:420,padding:"12px 16px",borderRadius:12,border:"2px solid #eee",fontSize:19,outline:"none",textAlign:"center",marginBottom:16,boxSizing:"border-box"}} />
+        <div style={{textAlign:"center",padding:"64px 48px"}}>
+          <div style={{fontSize:80,marginBottom:8,animation:"float 2s ease-in-out infinite"}}>{"\u270D\uFE0F"}</div>
+          <h1 style={{fontSize:40,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Welcome</h1>
+          <p style={{color:"#888",fontSize:17,lineHeight:1.6,marginBottom:20}}>Please enter your name to begin the assessment</p>
+          <input value={appName} onChange={function(e){setAppName(e.target.value);}} onKeyDown={function(e){if(e.key==="Enter"&&appName.trim())setScreen("intro");}} placeholder="Your full name" style={{width:"100%",maxWidth:420,padding:"12px 16px",borderRadius:12,border:"2px solid #eee",fontSize:20,outline:"none",textAlign:"center",marginBottom:16,boxSizing:"border-box"}} />
           <br />
-          <button onClick={function(){if(appName.trim())setScreen("intro");}} style={{padding:"12px 36px",borderRadius:12,border:"none",fontWeight:700,fontSize:19,cursor:appName.trim()?"pointer":"default",background:appName.trim()?"linear-gradient(135deg,#D85A30,#D4537E)":"#ccc",color:"#fff",boxShadow:appName.trim()?"0 4px 16px rgba(216,90,48,0.3)":"none",opacity:appName.trim()?1:0.6}}>Continue</button>
+          <button onClick={function(){if(appName.trim())setScreen("intro");}} style={{padding:"12px 36px",borderRadius:12,border:"none",fontWeight:700,fontSize:20,cursor:appName.trim()?"pointer":"default",background:appName.trim()?"linear-gradient(135deg,#D85A30,#D4537E)":"#ccc",color:"#fff",boxShadow:appName.trim()?"0 4px 16px rgba(216,90,48,0.3)":"none",opacity:appName.trim()?1:0.6}}>Continue</button>
         </div>
       )}
 
       {/* ═══ MAIN INTRO ═══ */}
       {screen==="intro"&&(
-        <div style={{textAlign:"center",padding:"40px 32px"}}>
-          <div style={{fontSize:60,marginBottom:4,animation:"float 2s ease-in-out infinite"}}>{"\u{1f4de}"}</div>
-          <h1 style={{fontSize:28,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Screening Assessment</h1>
-          <p style={{color:"#999",fontSize:15,lineHeight:1.6,marginBottom:20}}>Take the four games to test your key applicant's traits</p>
+        <div style={{textAlign:"center",padding:"52px 48px"}}>
+          <div style={{fontSize:80,marginBottom:4,animation:"float 2s ease-in-out infinite"}}>{"\u{1f4de}"}</div>
+          <h1 style={{fontSize:40,fontWeight:700,marginBottom:4,background:"linear-gradient(135deg,#D85A30,#D4537E)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Screening Assessment</h1>
+          <p style={{color:"#999",fontSize:16,lineHeight:1.6,marginBottom:20}}>Take the four games to test your key applicant's traits</p>
           <div style={{display:"flex",flexDirection:"column",gap:6,marginBottom:24}}>
-            {GAMES.map(function(g,i){return(<div key={g.id} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 14px",borderRadius:12,background:g.bg,animation:"popIn 0.4s ease "+(i*0.08)+"s both"}}><span style={{fontSize:25}}>{g.icon}</span><div style={{flex:1,textAlign:"left"}}><div style={{fontWeight:600,fontSize:16,color:g.color}}>{g.label}</div></div></div>);})}
+            {GAMES.map(function(g,i){return(<div key={g.id} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 14px",borderRadius:12,background:g.bg,animation:"popIn 0.4s ease "+(i*0.08)+"s both"}}><span style={{fontSize:32}}>{g.icon}</span><div style={{flex:1,textAlign:"left"}}><div style={{fontWeight:600,fontSize:17,color:g.color}}>{g.label}</div></div></div>);})}
           </div>
-          <button onClick={startCurrentGame} style={{padding:"12px 36px",borderRadius:12,border:"none",fontWeight:700,fontSize:19,cursor:"pointer",background:"linear-gradient(135deg,#D85A30,#D4537E)",color:"#fff",boxShadow:"0 4px 16px rgba(216,90,48,0.3)",animation:"pulse 2s ease-in-out infinite"}}>Begin assessment</button>
+          <button onClick={startCurrentGame} style={{padding:"12px 36px",borderRadius:12,border:"none",fontWeight:700,fontSize:20,cursor:"pointer",background:"linear-gradient(135deg,#D85A30,#D4537E)",color:"#fff",boxShadow:"0 4px 16px rgba(216,90,48,0.3)",animation:"pulse 2s ease-in-out infinite"}}>Begin assessment</button>
         </div>
       )}
 
@@ -286,8 +286,8 @@ export default function App() {
         <div>
           {/* Game header */}
           <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12,padding:"8px 0",borderBottom:"2px solid "+game.bg}}>
-            <span style={{fontSize:25}}>{game.icon}</span>
-            <span style={{fontWeight:700,fontSize:19,color:game.color}}>{game.label}</span>
+            <span style={{fontSize:32}}>{game.icon}</span>
+            <span style={{fontWeight:700,fontSize:20,color:game.color}}>{game.label}</span>
             <div style={{marginLeft:"auto",display:"flex",gap:4}}>
               {GAMES.map(function(_,i){return <div key={i} style={{width:8,height:8,borderRadius:4,background:i===gi?game.color:i<gi?"#1D9E75":"#ddd"}} />;})}
             </div>
@@ -295,27 +295,27 @@ export default function App() {
 
           {/* ═══ BETWEEN-GAME TRANSITION ═══ */}
           {sub==="intro"&&(
-            <div style={{textAlign:"center",padding:"40px 32px",animation:"popIn 0.3s ease"}}>
-              <div style={{fontSize:60,marginBottom:8,animation:"float 2s ease-in-out infinite"}}>{game.icon}</div>
-              <h2 style={{fontSize:25,fontWeight:700,color:game.color,marginBottom:4}}>{"Up next: "+game.label}</h2>
-              <p style={{color:"#888",fontSize:16,marginBottom:20}}>{"Game "+(gi+1)+" of "+GAMES.length}</p>
-              <button onClick={startCurrentGame} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:19,cursor:"pointer",background:game.color,color:"#fff",boxShadow:"0 4px 16px rgba(0,0,0,0.15)"}}>Start</button>
+            <div style={{textAlign:"center",padding:"52px 48px",animation:"popIn 0.3s ease"}}>
+              <div style={{fontSize:80,marginBottom:8,animation:"float 2s ease-in-out infinite"}}>{game.icon}</div>
+              <h2 style={{fontSize:32,fontWeight:700,color:game.color,marginBottom:4}}>{"Up next: "+game.label}</h2>
+              <p style={{color:"#888",fontSize:17,marginBottom:20}}>{"Game "+(gi+1)+" of "+GAMES.length}</p>
+              <button onClick={startCurrentGame} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:20,cursor:"pointer",background:game.color,color:"#fff",boxShadow:"0 4px 16px rgba(0,0,0,0.15)"}}>Start</button>
             </div>
           )}
 
           {/* ═══ WORD SPRINT ═══ */}
           {game.id==="word"&&sub==="practice_intro"&&(
-            <div style={{textAlign:"center",padding:"28px 32px",animation:"popIn 0.3s ease"}}>
+            <div style={{textAlign:"center",padding:"36px 48px",animation:"popIn 0.3s ease"}}>
               <p style={{color:"#666",fontSize:17,lineHeight:1.7,marginBottom:16,textAlign:"left",maxWidth:480,margin:"0 auto 16px"}}>This game tests how quickly you can think of words under pressure.</p>
               <div style={{textAlign:"left",maxWidth:460,margin:"0 auto 16px"}}>
-                <div style={{fontSize:16,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
+                <div style={{fontSize:17,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
                 <div style={{display:"flex",flexDirection:"column",gap:6}}>
-                  {["You'll see 9 letters on screen","Type as many valid English words as you can","Words must be at least 4 letters long","Each letter can only be used once per word","You have 30 seconds per round, 3 rounds total"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:16,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:600,color:"#534AB7"}}>{i+1}</span><span>{t}</span></div>);})}
+                  {["You'll see 9 letters on screen","Type as many valid English words as you can","Words must be at least 4 letters long","Each letter can only be used once per word","You have 30 seconds per round, 3 rounds total"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:17,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:15,fontWeight:600,color:"#534AB7"}}>{i+1}</span><span>{t}</span></div>);})}
                 </div>
               </div>
-              <p style={{fontSize:15,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
+              <p style={{fontSize:16,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
               <div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:16}}>
-                {WSample.letters.map(function(l,i){return <div key={i} style={{width:48,height:48,borderRadius:10,background:"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,fontWeight:700,color:"#534AB7"}}>{l}</div>;})}
+                {WSample.letters.map(function(l,i){return <div key={i} style={{width:48,height:48,borderRadius:10,background:"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:40,fontWeight:700,color:"#534AB7"}}>{l}</div>;})}
               </div>
               <button onClick={function(){setSub("sample");}} style={{padding:"10px 28px",borderRadius:10,background:"#534AB7",color:"#fff",border:"none",fontWeight:600,fontSize:17,cursor:"pointer"}}>Start practice</button>
             </div>
@@ -323,115 +323,115 @@ export default function App() {
           {game.id==="word"&&(sub==="sample"||sub==="game")&&(
             <div style={{animation:"popIn 0.3s ease"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
-                <span style={{fontSize:15,color:"#888"}}>{sub==="sample"?"Practice":("Round "+(wri+1)+"/3")+(" \u00b7 Found: "+wCurFound.length)}</span>
-                <span style={{fontSize:16,fontWeight:600,color:wTClr}}>{Math.max(wCurTime,0)+"s"}</span>
+                <span style={{fontSize:16,color:"#888"}}>{sub==="sample"?"Practice":("Round "+(wri+1)+"/3")+(" \u00b7 Found: "+wCurFound.length)}</span>
+                <span style={{fontSize:17,fontWeight:600,color:wTClr}}>{Math.max(wCurTime,0)+"s"}</span>
               </div>
               <div style={{height:5,borderRadius:3,background:"#eee",marginBottom:14}}><div style={{width:wPct+"%",height:"100%",borderRadius:3,background:wTClr,transition:"width 1s linear"}} /></div>
               <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:6,marginBottom:16}}>
-                {wCurLetters.map(function(l,i){var sz=sub==="sample"?62:54;var used=wUsedIdx.indexOf(i)!==-1;return <button key={i} onClick={function(){wTileClick(l,i);}} style={{width:sz,height:sz,borderRadius:10,background:used?"#D5D3F5":"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:sub==="sample"?28:22,fontWeight:700,color:used?"#9A95CC":"#534AB7",border:"none",cursor:used?"default":"pointer",opacity:used?0.55:1,transition:"opacity 0.1s,background 0.1s"}}>{l}</button>;})}
+                {wCurLetters.map(function(l,i){var sz=sub==="sample"?84:72;var used=wUsedIdx.indexOf(i)!==-1;return <button key={i} onClick={function(){wTileClick(l,i);}} style={{width:sz,height:sz,borderRadius:10,background:used?"#D5D3F5":"#EEEDFE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:sub==="sample"?36:28,fontWeight:700,color:used?"#9A95CC":"#534AB7",border:"none",cursor:used?"default":"pointer",opacity:used?0.55:1,transition:"opacity 0.1s,background 0.1s"}}>{l}</button>;})}
               </div>
               <div style={{display:"flex",gap:6,marginBottom:8}}>
-                <input ref={wIRef} value={wIn} onChange={function(e){setWIn(e.target.value);}} onKeyDown={function(e){if(e.key==="Enter")wSubmit();}} placeholder="Type a word..." style={{flex:1,padding:"10px 14px",borderRadius:10,border:wFb==="correct"?"2px solid #1D9E75":(wFb==="wrong"||wFb==="badletters")?"2px solid #E24B4A":"2px solid #eee",fontSize:19,outline:"none",background:"#fff"}} />
-                <button onClick={function(){setWIn(function(w){return w.slice(0,-1);});}} style={{padding:"10px 12px",borderRadius:10,background:"#eee",color:"#555",border:"none",fontWeight:600,fontSize:20,cursor:"pointer"}}>{"⌫"}</button>
+                <input ref={wIRef} value={wIn} onChange={function(e){setWIn(e.target.value);}} onKeyDown={function(e){if(e.key==="Enter")wSubmit();}} placeholder="Type a word..." style={{flex:1,padding:"10px 14px",borderRadius:10,border:wFb==="correct"?"2px solid #1D9E75":(wFb==="wrong"||wFb==="badletters")?"2px solid #E24B4A":"2px solid #eee",fontSize:20,outline:"none",background:"#fff"}} />
+                <button onClick={function(){setWIn(function(w){return w.slice(0,-1);});}} style={{padding:"10px 12px",borderRadius:10,background:"#eee",color:"#555",border:"none",fontWeight:600,fontSize:24,cursor:"pointer"}}>{"⌫"}</button>
                 <button onClick={wSubmit} style={{padding:"10px 18px",borderRadius:10,background:"#534AB7",color:"#fff",border:"none",fontWeight:600,fontSize:17,cursor:"pointer"}}>Go</button>
               </div>
-              <div style={{minHeight:20,textAlign:"center",fontSize:15,marginBottom:8}}>
+              <div style={{minHeight:20,textAlign:"center",fontSize:16,marginBottom:8}}>
                 {wFb==="correct"&&<span style={{color:"#1D9E75",fontWeight:600}}>Nice!</span>}
                 {wFb==="wrong"&&<span style={{color:"#E24B4A"}}>Not a valid word</span>}
                 {wFb==="duplicate"&&<span style={{color:"#EF9F27"}}>Already found!</span>}
                 {wFb==="short"&&<span style={{color:"#EF9F27"}}>4 letters minimum!</span>}
                 {wFb==="badletters"&&<span style={{color:"#E24B4A"}}>{"Can't form that from these letters!"}</span>}
               </div>
-              {wCurFound.length>0&&(<div style={{display:"flex",flexWrap:"wrap",gap:4}}>{wCurFound.map(function(w){return <span key={w} style={{fontSize:14,padding:"3px 8px",borderRadius:6,background:"#E1F5EE",color:"#0F6E56",fontWeight:500}}>{w}</span>;})}</div>)}
+              {wCurFound.length>0&&(<div style={{display:"flex",flexWrap:"wrap",gap:4}}>{wCurFound.map(function(w){return <span key={w} style={{fontSize:15,padding:"3px 8px",borderRadius:6,background:"#E1F5EE",color:"#0F6E56",fontWeight:500}}>{w}</span>;})}</div>)}
             </div>
           )}
           {game.id==="word"&&sub==="sampleresult"&&(
-            <div style={{textAlign:"center",padding:"32px 32px",animation:"popIn 0.3s ease"}}>
-              <h2 style={{fontSize:22,fontWeight:700,color:"#534AB7",marginBottom:4}}>Practice complete!</h2>
+            <div style={{textAlign:"center",padding:"44px 48px",animation:"popIn 0.3s ease"}}>
+              <h2 style={{fontSize:28,fontWeight:700,color:"#534AB7",marginBottom:4}}>Practice complete!</h2>
               <p style={{fontSize:17,color:"#666",marginBottom:12}}>{"You found "}<strong>{wSF.length}</strong>{" word"+(wSF.length!==1?"s":"")}</p>
-              <button onClick={function(){setWScr(shuffle(WB[wRounds[0]].l));setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:19,cursor:"pointer",background:"#534AB7",color:"#fff"}}>{"Start the real rounds!"}</button>
+              <button onClick={function(){setWScr(shuffle(WB[wRounds[0]].l));setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:20,cursor:"pointer",background:"#534AB7",color:"#fff"}}>{"Start the real rounds!"}</button>
             </div>
           )}
           {game.id==="word"&&sub==="roundbreak"&&(
-            <div style={{textAlign:"center",padding:"48px 32px",animation:"popIn 0.3s ease"}}>
-              <h2 style={{fontSize:22,fontWeight:700,color:"#534AB7",marginBottom:6}}>{"Round "+wri+" complete!"}</h2>
+            <div style={{textAlign:"center",padding:"60px 48px",animation:"popIn 0.3s ease"}}>
+              <h2 style={{fontSize:28,fontWeight:700,color:"#534AB7",marginBottom:6}}>{"Round "+wri+" complete!"}</h2>
               <p style={{fontSize:17,color:"#666",marginBottom:4}}>{"You found "}<strong>{wRes[wRes.length-1].found}</strong>{" words"}</p>
-              <p style={{fontSize:16,color:"#999",marginBottom:20}}>{"Round "+(wri+1)+" of 3 coming up!"}</p>
+              <p style={{fontSize:17,color:"#999",marginBottom:20}}>{"Round "+(wri+1)+" of 3 coming up!"}</p>
               <button onClick={function(){setWScr(shuffle(WB[wRounds[wri]].l));setWFound([]);setWIn("");setWTime(30);setWFb(null);setSub("game");}} style={{padding:"12px 28px",borderRadius:10,background:"#534AB7",color:"#fff",border:"none",fontWeight:600,fontSize:17,cursor:"pointer"}}>Next round</button>
             </div>
           )}
 
           {/* ═══ KEEP GOING ═══ */}
           {game.id==="keep"&&sub==="practice_intro"&&(
-            <div style={{textAlign:"center",padding:"28px 32px",animation:"popIn 0.3s ease"}}>
+            <div style={{textAlign:"center",padding:"36px 48px",animation:"popIn 0.3s ease"}}>
               <p style={{color:"#666",fontSize:17,lineHeight:1.7,marginBottom:16,textAlign:"left",maxWidth:480,margin:"0 auto 16px"}}>This game tests how you perform when things get progressively harder.</p>
               <div style={{textAlign:"left",maxWidth:460,margin:"0 auto 16px"}}>
-                <div style={{fontSize:16,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
+                <div style={{fontSize:17,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
                 <div style={{display:"flex",flexDirection:"column",gap:6}}>
-                  {["Solve math problems as fast as you can","Difficulty level increases as you go","You have 90 seconds \u2014 try your best!"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:16,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#FAECE7",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:600,color:"#D85A30"}}>{i+1}</span><span>{t}</span></div>);})}
+                  {["Solve math problems as fast as you can","Difficulty level increases as you go","You have 90 seconds \u2014 try your best!"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:17,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#FAECE7",display:"flex",alignItems:"center",justifyContent:"center",fontSize:15,fontWeight:600,color:"#D85A30"}}>{i+1}</span><span>{t}</span></div>);})}
                 </div>
               </div>
-              <p style={{fontSize:15,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
+              <p style={{fontSize:16,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
               <button onClick={function(){setKQ(genQ(1));setKSC(0);setKSCr(0);setKSFb(null);setSub("sample");}} style={{padding:"10px 28px",borderRadius:10,background:"#D85A30",color:"#fff",border:"none",fontWeight:600,fontSize:17,cursor:"pointer"}}>Start practice</button>
             </div>
           )}
           {game.id==="keep"&&sub==="sample"&&kQ&&(
             <div style={{animation:"popIn 0.3s ease"}}>
-              <div style={{fontSize:15,color:"#888",marginBottom:8}}>{"Practice \u00b7 Question "+(kSC+1)+" of 2"}</div>
+              <div style={{fontSize:16,color:"#888",marginBottom:8}}>{"Practice \u00b7 Question "+(kSC+1)+" of 2"}</div>
               <div style={{textAlign:"center",padding:"22px 14px",borderRadius:16,background:"#fff",boxShadow:"0 4px 20px rgba(0,0,0,0.06)",marginBottom:14,border:kSFb==="correct"?"2px solid #1D9E75":kSFb==="wrong"?"2px solid #E24B4A":"2px solid transparent"}}>
-                <div style={{fontSize:38,fontWeight:700,color:"#333"}}>{kQ.q}</div>
+                <div style={{fontSize:52,fontWeight:700,color:"#333"}}>{kQ.q}</div>
               </div>
               <div style={{display:"flex",gap:8}}>
-                {kQ.opts.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(kSFb!==null){if(o===kQ.answer){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#FCEBEB";clr="#999";}}return <button key={i} onClick={function(e){kSamplePick(o,e.currentTarget);}} style={{flex:1,padding:"16px 8px",borderRadius:14,background:bg,border:brd,color:clr,fontWeight:600,fontSize:25,cursor:kSFb?"default":"pointer"}}>{o}</button>;})}
+                {kQ.opts.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(kSFb!==null){if(o===kQ.answer){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#FCEBEB";clr="#999";}}return <button key={i} onClick={function(e){kSamplePick(o,e.currentTarget);}} style={{flex:1,padding:"16px 8px",borderRadius:14,background:bg,border:brd,color:clr,fontWeight:600,fontSize:32,cursor:kSFb?"default":"pointer"}}>{o}</button>;})}
               </div>
             </div>
           )}
           {game.id==="keep"&&sub==="sampleresult"&&(
-            <div style={{textAlign:"center",padding:"32px 32px",animation:"popIn 0.3s ease"}}>
-              <h2 style={{fontSize:22,fontWeight:700,color:"#D85A30",marginBottom:4}}>Practice complete!</h2>
+            <div style={{textAlign:"center",padding:"44px 48px",animation:"popIn 0.3s ease"}}>
+              <h2 style={{fontSize:28,fontWeight:700,color:"#D85A30",marginBottom:4}}>Practice complete!</h2>
               <p style={{fontSize:17,color:"#666",marginBottom:16}}>{"You got "}<strong>{kSCr}</strong>{" out of 2 correct"}</p>
-              <button onClick={function(){setKLv(1);setKQ(genQ(1));setKStr(0);setKTot(0);setKCor(0);setKFb(null);setKWr(0);setKTime(90);kDone.current=false;setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:19,cursor:"pointer",background:"#D85A30",color:"#fff"}}>{"Start the real game!"}</button>
+              <button onClick={function(){setKLv(1);setKQ(genQ(1));setKStr(0);setKTot(0);setKCor(0);setKFb(null);setKWr(0);setKTime(90);kDone.current=false;setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:20,cursor:"pointer",background:"#D85A30",color:"#fff"}}>{"Start the real game!"}</button>
             </div>
           )}
           {game.id==="keep"&&sub==="game"&&kQ&&(
             <div style={{animation:"popIn 0.3s ease"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
-                <div style={{fontSize:15,color:"#888"}}>{"Level: "}<span style={{fontWeight:600,color:DC[kLv]}}>{DL[kLv]}</span></div>
-                <span style={{fontSize:16,fontWeight:600,color:kTClr}}>{Math.max(kTime,0)+"s"}</span>
+                <div style={{fontSize:16,color:"#888"}}>{"Level: "}<span style={{fontWeight:600,color:DC[kLv]}}>{DL[kLv]}</span></div>
+                <span style={{fontSize:17,fontWeight:600,color:kTClr}}>{Math.max(kTime,0)+"s"}</span>
               </div>
               <div style={{height:5,borderRadius:3,background:"#eee",marginBottom:6}}><div style={{width:kPct+"%",height:"100%",borderRadius:3,background:kTClr,transition:"width 1s linear"}} /></div>
               <div style={{display:"flex",gap:3,marginBottom:14}}>{[1,2,3,4,5,6].map(function(l){return <div key={l} style={{flex:1,height:6,borderRadius:3,background:l<=kLv?DC[l]:"#eee"}} />;})}</div>
-              {kWr>=3&&(<div style={{textAlign:"center",marginBottom:12,padding:"10px 14px",borderRadius:10,background:"#FCEBEB"}}><p style={{fontSize:16,color:"#A32D2D",fontWeight:600,marginBottom:6}}>Getting tough! Keep going or call it quits?</p><button onClick={function(){kDone.current=true;clearInterval(kRef.current);finishGame({label:"Keep going",score:kCor,total:Math.max(kTot,1),maxLevel:kML,maxStreak:kMS,quit:true});}} style={{padding:"6px 18px",borderRadius:8,background:"#fff",border:"1.5px solid #E24B4A",color:"#E24B4A",fontSize:15,fontWeight:500,cursor:"pointer"}}>{"I'll stop here"}</button></div>)}
+              {kWr>=3&&(<div style={{textAlign:"center",marginBottom:12,padding:"10px 14px",borderRadius:10,background:"#FCEBEB"}}><p style={{fontSize:17,color:"#A32D2D",fontWeight:600,marginBottom:6}}>Getting tough! Keep going or call it quits?</p><button onClick={function(){kDone.current=true;clearInterval(kRef.current);finishGame({label:"Keep going",score:kCor,total:Math.max(kTot,1),maxLevel:kML,maxStreak:kMS,quit:true});}} style={{padding:"6px 18px",borderRadius:8,background:"#fff",border:"1.5px solid #E24B4A",color:"#E24B4A",fontSize:16,fontWeight:500,cursor:"pointer"}}>{"I'll stop here"}</button></div>)}
               <div style={{textAlign:"center",padding:"22px 14px",borderRadius:16,background:"#fff",boxShadow:"0 4px 20px rgba(0,0,0,0.06)",marginBottom:14,border:kFb==="correct"?"2px solid #1D9E75":kFb==="wrong"?"2px solid #E24B4A":"2px solid transparent",animation:kFb==="wrong"?"shake 0.3s ease":"none"}}>
-                <div style={{fontSize:14,color:DC[kLv],fontWeight:600,marginBottom:6}}>{"LEVEL "+kLv+" \u2014 "+DL[kLv].toUpperCase()}</div>
-                <div style={{fontSize:38,fontWeight:700,color:"#333"}}>{kQ.q}</div>
+                <div style={{fontSize:15,color:DC[kLv],fontWeight:600,marginBottom:6}}>{"LEVEL "+kLv+" \u2014 "+DL[kLv].toUpperCase()}</div>
+                <div style={{fontSize:52,fontWeight:700,color:"#333"}}>{kQ.q}</div>
               </div>
               <div style={{display:"flex",gap:8}}>
-                {kQ.opts.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(kFb!==null){if(o===kQ.answer){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#FCEBEB";clr="#999";}}return <button key={i} onClick={function(e){kPick(o,e.currentTarget);}} style={{flex:1,padding:"16px 8px",borderRadius:14,background:bg,border:brd,color:clr,fontWeight:600,fontSize:25,cursor:kFb?"default":"pointer"}}>{o}</button>;})}
+                {kQ.opts.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(kFb!==null){if(o===kQ.answer){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#FCEBEB";clr="#999";}}return <button key={i} onClick={function(e){kPick(o,e.currentTarget);}} style={{flex:1,padding:"16px 8px",borderRadius:14,background:bg,border:brd,color:clr,fontWeight:600,fontSize:32,cursor:kFb?"default":"pointer"}}>{o}</button>;})}
               </div>
-              <div style={{textAlign:"center",marginTop:10,fontSize:16}}><span style={{fontWeight:700,color:"#1D9E75"}}>{kCor}</span><span style={{color:"#aaa"}}>{" / "+kTot+" correct"}</span></div>
+              <div style={{textAlign:"center",marginTop:10,fontSize:17}}><span style={{fontWeight:700,color:"#1D9E75"}}>{kCor}</span><span style={{color:"#aaa"}}>{" / "+kTot+" correct"}</span></div>
             </div>
           )}
 
           {/* ═══ INFO SCAN ═══ */}
           {game.id==="scan"&&sub==="practice_intro"&&(
-            <div style={{textAlign:"center",padding:"28px 32px",animation:"popIn 0.3s ease"}}>
+            <div style={{textAlign:"center",padding:"36px 48px",animation:"popIn 0.3s ease"}}>
               <p style={{color:"#666",fontSize:17,lineHeight:1.7,marginBottom:16,textAlign:"left",maxWidth:480,margin:"0 auto 16px"}}>This game tests how quickly you can absorb and recall information.</p>
               <div style={{textAlign:"left",maxWidth:460,margin:"0 auto 16px"}}>
-                <div style={{fontSize:16,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
+                <div style={{fontSize:17,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
                 <div style={{display:"flex",flexDirection:"column",gap:6}}>
-                  {["You'll see a company profile on screen","Memorize as many details as you can","Answer questions about the profile from memory","Study time gets shorter with each profile","3 profiles, 2 questions each"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:16,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#E1F5EE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:600,color:"#1D9E75"}}>{i+1}</span><span>{t}</span></div>);})}
+                  {["You'll see a company profile on screen","Memorize as many details as you can","Answer questions about the profile from memory","Study time gets shorter with each profile","3 profiles, 2 questions each"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:17,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#E1F5EE",display:"flex",alignItems:"center",justifyContent:"center",fontSize:15,fontWeight:600,color:"#1D9E75"}}>{i+1}</span><span>{t}</span></div>);})}
                 </div>
               </div>
-              <p style={{fontSize:15,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
+              <p style={{fontSize:16,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
               <button onClick={function(){setSPPh("study");setSPSt(12);setSPQi(0);setSPSc(0);setSPFb(null);setSub("practice");}} style={{padding:"10px 28px",borderRadius:10,background:"#1D9E75",color:"#fff",border:"none",fontWeight:600,fontSize:17,cursor:"pointer"}}>Start practice</button>
             </div>
           )}
           {game.id==="scan"&&sub==="practice"&&sPPh==="study"&&(
             <div style={{animation:"popIn 0.3s ease"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
-                <span style={{fontSize:15,color:"#888"}}>Practice</span>
-                <span style={{fontSize:16,fontWeight:600,color:sSTClr}}>{"Study: "+Math.max(sPSt,0)+"s"}</span>
+                <span style={{fontSize:16,color:"#888"}}>Practice</span>
+                <span style={{fontSize:17,fontWeight:600,color:sSTClr}}>{"Study: "+Math.max(sPSt,0)+"s"}</span>
               </div>
               <div style={{height:5,borderRadius:3,background:"#eee",marginBottom:14}}><div style={{width:sSPct+"%",height:"100%",borderRadius:3,background:sSTClr,transition:"width 1s linear"}} /></div>
               <PC p={SPractice} />
@@ -440,12 +440,12 @@ export default function App() {
           {game.id==="scan"&&sub==="practice"&&sPPh==="answer"&&(
             <div style={{animation:"popIn 0.3s ease"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
-                <span style={{fontSize:15,color:"#888"}}>{"Practice \u00b7 Q"+(sPQi+1)+" of 2"}</span>
-                <span style={{fontSize:16,fontWeight:600,color:"#D85A30"}}>Answer!</span>
+                <span style={{fontSize:16,color:"#888"}}>{"Practice \u00b7 Q"+(sPQi+1)+" of 2"}</span>
+                <span style={{fontSize:17,fontWeight:600,color:"#D85A30"}}>Answer!</span>
               </div>
               <div style={{textAlign:"center",padding:"16px",borderRadius:14,background:"#fff",boxShadow:"0 4px 16px rgba(0,0,0,0.06)",marginBottom:12}}>
-                <div style={{fontSize:15,color:"#888",marginBottom:4}}>{"About "+SPractice.name+":"}</div>
-                <div style={{fontSize:19,fontWeight:600}}>{SPractice.questions[sPQi].q}</div>
+                <div style={{fontSize:16,color:"#888",marginBottom:4}}>{"About "+SPractice.name+":"}</div>
+                <div style={{fontSize:20,fontWeight:600}}>{SPractice.questions[sPQi].q}</div>
               </div>
               <div style={{display:"flex",flexDirection:"column",gap:6}}>
                 {sPOp.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(sPFb!==null){if(o===SPractice.questions[sPQi].answer){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#f8f7f4";clr="#999";}}return <button key={i} onClick={function(e){sPracticePick(o,e.currentTarget);}} style={{padding:"12px 16px",borderRadius:10,background:bg,border:brd,color:clr,fontWeight:500,fontSize:17,cursor:sPFb?"default":"pointer",textAlign:"left"}}>{o}</button>;})}
@@ -453,17 +453,17 @@ export default function App() {
             </div>
           )}
           {game.id==="scan"&&sub==="sampleresult"&&(
-            <div style={{textAlign:"center",padding:"32px 32px",animation:"popIn 0.3s ease"}}>
-              <h2 style={{fontSize:22,fontWeight:700,color:"#1D9E75",marginBottom:4}}>Practice complete!</h2>
+            <div style={{textAlign:"center",padding:"44px 48px",animation:"popIn 0.3s ease"}}>
+              <h2 style={{fontSize:28,fontWeight:700,color:"#1D9E75",marginBottom:4}}>Practice complete!</h2>
               <p style={{fontSize:17,color:"#666",marginBottom:16}}>{"You got "}<strong>{sPSc}</strong>{" out of 2 correct"}</p>
-              <button onClick={function(){setSPh("study");setSSt(10);setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:19,cursor:"pointer",background:"#1D9E75",color:"#fff"}}>{"Start the real game!"}</button>
+              <button onClick={function(){setSPh("study");setSSt(10);setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:20,cursor:"pointer",background:"#1D9E75",color:"#fff"}}>{"Start the real game!"}</button>
             </div>
           )}
           {game.id==="scan"&&sub==="game"&&sPh==="study"&&sProf[spi]&&(
             <div style={{animation:"popIn 0.3s ease"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
-                <span style={{fontSize:15,color:"#888"}}>{"Profile "+(spi+1)+" of 3"}</span>
-                <span style={{fontSize:16,fontWeight:600,color:sSTClr}}>{"Study: "+Math.max(sSt,0)+"s"}</span>
+                <span style={{fontSize:16,color:"#888"}}>{"Profile "+(spi+1)+" of 3"}</span>
+                <span style={{fontSize:17,fontWeight:600,color:sSTClr}}>{"Study: "+Math.max(sSt,0)+"s"}</span>
               </div>
               <div style={{height:5,borderRadius:3,background:"#eee",marginBottom:14}}><div style={{width:sSPct+"%",height:"100%",borderRadius:3,background:sSTClr,transition:"width 1s linear"}} /></div>
               <PC p={sProf[spi]} />
@@ -472,12 +472,12 @@ export default function App() {
           {game.id==="scan"&&sub==="game"&&sPh==="answer"&&sProf[spi]&&sQs[spi]&&sQs[spi][sqi]&&(
             <div style={{animation:"popIn 0.3s ease"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
-                <span style={{fontSize:15,color:"#888"}}>{"Profile "+(spi+1)+" \u00b7 Q"+(sqi+1)+" of 2"}</span>
-                <span style={{fontSize:16,fontWeight:600,color:"#D85A30"}}>Answer!</span>
+                <span style={{fontSize:16,color:"#888"}}>{"Profile "+(spi+1)+" \u00b7 Q"+(sqi+1)+" of 2"}</span>
+                <span style={{fontSize:17,fontWeight:600,color:"#D85A30"}}>Answer!</span>
               </div>
               <div style={{textAlign:"center",padding:"16px",borderRadius:14,background:"#fff",boxShadow:"0 4px 16px rgba(0,0,0,0.06)",marginBottom:12}}>
-                <div style={{fontSize:15,color:"#888",marginBottom:4}}>{"About "+sProf[spi].name+":"}</div>
-                <div style={{fontSize:19,fontWeight:600}}>{sQs[spi][sqi].q}</div>
+                <div style={{fontSize:16,color:"#888",marginBottom:4}}>{"About "+sProf[spi].name+":"}</div>
+                <div style={{fontSize:20,fontWeight:600}}>{sQs[spi][sqi].q}</div>
               </div>
               <div style={{display:"flex",flexDirection:"column",gap:6}}>
                 {sOp.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(sFb!==null){if(o===sQs[spi][sqi].answer){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#f8f7f4";clr="#999";}}return <button key={i} onClick={function(e){sGamePick(o,e.currentTarget);}} style={{padding:"12px 16px",borderRadius:10,background:bg,border:brd,color:clr,fontWeight:500,fontSize:17,cursor:sFb?"default":"pointer",textAlign:"left"}}>{o}</button>;})}
@@ -487,41 +487,41 @@ export default function App() {
 
           {/* ═══ SNAP DECISION ═══ */}
           {game.id==="snap"&&sub==="practice_intro"&&(
-            <div style={{textAlign:"center",padding:"28px 32px",animation:"popIn 0.3s ease"}}>
+            <div style={{textAlign:"center",padding:"36px 48px",animation:"popIn 0.3s ease"}}>
               <p style={{color:"#666",fontSize:17,lineHeight:1.7,marginBottom:16,textAlign:"left",maxWidth:480,margin:"0 auto 16px"}}>This game tests how quickly you can assess a situation and choose the best response.</p>
               <div style={{textAlign:"left",maxWidth:460,margin:"0 auto 16px"}}>
-                <div style={{fontSize:16,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
+                <div style={{fontSize:17,fontWeight:600,color:"#333",marginBottom:8}}>How it works:</div>
                 <div style={{display:"flex",flexDirection:"column",gap:6}}>
-                  {["You'll see a realistic sales scenario","Pick the best response from the options","You have 15 seconds per scenario","7 scenarios in total"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:16,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#FBEAF0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:600,color:"#D4537E"}}>{i+1}</span><span>{t}</span></div>);})}
+                  {["You'll see a realistic sales scenario","Pick the best response from the options","You have 15 seconds per scenario","7 scenarios in total"].map(function(t,i){return(<div key={i} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:17,color:"#555"}}><span style={{minWidth:20,height:20,borderRadius:6,background:"#FBEAF0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:15,fontWeight:600,color:"#D4537E"}}>{i+1}</span><span>{t}</span></div>);})}
                 </div>
               </div>
-              <p style={{fontSize:15,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
+              <p style={{fontSize:16,color:"#888",marginBottom:12}}>{"Let's start with a quick practice round"}</p>
               <button onClick={function(){setNPFb(null);setNPS(0);setNPOp(shuffle([].concat(SnapPractice.opts)));setSub("sample");}} style={{padding:"10px 28px",borderRadius:10,background:"#D4537E",color:"#fff",border:"none",fontWeight:600,fontSize:17,cursor:"pointer"}}>Start practice</button>
             </div>
           )}
           {game.id==="snap"&&sub==="sample"&&(
             <div style={{animation:"popIn 0.3s ease"}}>
-              <div style={{fontSize:15,color:"#888",marginBottom:8}}>Practice round</div>
+              <div style={{fontSize:16,color:"#888",marginBottom:8}}>Practice round</div>
               <div style={{padding:"14px 16px",borderRadius:14,background:"#FBEAF0",marginBottom:12,border:"1.5px solid #D4537E33"}}>
                 <div style={{fontSize:17,fontWeight:600,color:"#72243E",lineHeight:1.5}}>{SnapPractice.situation}</div>
               </div>
               <div style={{display:"flex",flexDirection:"column",gap:6}}>
-                {nPOp.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(nPFb!==null){if(o===SnapPractice.best){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#f8f7f4";clr="#999";}}return <button key={i} onClick={function(e){nPracticePick(o,e.currentTarget);}} style={{padding:"11px 14px",borderRadius:10,background:bg,border:brd,color:clr,fontWeight:500,fontSize:16,cursor:nPFb?"default":"pointer",textAlign:"left",lineHeight:1.4}}>{o}</button>;})}
+                {nPOp.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(nPFb!==null){if(o===SnapPractice.best){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#f8f7f4";clr="#999";}}return <button key={i} onClick={function(e){nPracticePick(o,e.currentTarget);}} style={{padding:"11px 14px",borderRadius:10,background:bg,border:brd,color:clr,fontWeight:500,fontSize:17,cursor:nPFb?"default":"pointer",textAlign:"left",lineHeight:1.4}}>{o}</button>;})}
               </div>
             </div>
           )}
           {game.id==="snap"&&sub==="sampleresult"&&(
-            <div style={{textAlign:"center",padding:"32px 32px",animation:"popIn 0.3s ease"}}>
-              <h2 style={{fontSize:22,fontWeight:700,color:"#D4537E",marginBottom:4}}>Practice complete!</h2>
+            <div style={{textAlign:"center",padding:"44px 48px",animation:"popIn 0.3s ease"}}>
+              <h2 style={{fontSize:28,fontWeight:700,color:"#D4537E",marginBottom:4}}>Practice complete!</h2>
               <p style={{fontSize:17,color:"#666",marginBottom:16}}>{"You got it "}<strong>{nPS===1?"right":"wrong"}</strong></p>
-              <button onClick={function(){setNTime(15);setNOp(shuffle([].concat(nSc[0].opts)));setNFb(null);setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:19,cursor:"pointer",background:"#D4537E",color:"#fff"}}>{"Start the real game!"}</button>
+              <button onClick={function(){setNTime(15);setNOp(shuffle([].concat(nSc[0].opts)));setNFb(null);setSub("game");}} style={{padding:"12px 32px",borderRadius:12,border:"none",fontWeight:700,fontSize:20,cursor:"pointer",background:"#D4537E",color:"#fff"}}>{"Start the real game!"}</button>
             </div>
           )}
           {game.id==="snap"&&sub==="game"&&nSc[nsi]&&(
             <div style={{animation:"popIn 0.3s ease"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
-                <span style={{fontSize:15,color:"#888"}}>{"Scenario "+(nsi+1)+" of "+nSc.length}</span>
-                <span style={{fontSize:16,fontWeight:600,color:nTClr}}>{Math.max(nTime,0)+"s"}</span>
+                <span style={{fontSize:16,color:"#888"}}>{"Scenario "+(nsi+1)+" of "+nSc.length}</span>
+                <span style={{fontSize:17,fontWeight:600,color:nTClr}}>{Math.max(nTime,0)+"s"}</span>
               </div>
               <div style={{display:"flex",gap:3,marginBottom:8}}>{nSc.map(function(_,i){return <div key={i} style={{flex:1,height:4,borderRadius:2,background:i<nsi?"#1D9E75":i===nsi?"#D4537E":"#eee"}} />;})}</div>
               <div style={{height:5,borderRadius:3,background:"#eee",marginBottom:14}}><div style={{width:nPct+"%",height:"100%",borderRadius:3,background:nTClr,transition:"width 1s linear"}} /></div>
@@ -529,9 +529,9 @@ export default function App() {
                 <div style={{fontSize:17,fontWeight:600,color:"#72243E",lineHeight:1.5}}>{nSc[nsi].situation}</div>
               </div>
               <div style={{display:"flex",flexDirection:"column",gap:6}}>
-                {nOp.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(nFb!==null){if(o===nSc[nsi].best){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#f8f7f4";clr="#999";}}return <button key={i} onClick={function(e){nPick(o,e.currentTarget);}} style={{padding:"11px 14px",borderRadius:10,background:bg,border:brd,color:clr,fontWeight:500,fontSize:16,cursor:nFb?"default":"pointer",textAlign:"left",lineHeight:1.4}}>{o}</button>;})}
+                {nOp.map(function(o,i){var bg="#fff",brd="2px solid #eee",clr="#333";if(nFb!==null){if(o===nSc[nsi].best){bg="#E1F5EE";brd="2px solid #1D9E75";clr="#0F6E56";}else{bg="#f8f7f4";clr="#999";}}return <button key={i} onClick={function(e){nPick(o,e.currentTarget);}} style={{padding:"11px 14px",borderRadius:10,background:bg,border:brd,color:clr,fontWeight:500,fontSize:17,cursor:nFb?"default":"pointer",textAlign:"left",lineHeight:1.4}}>{o}</button>;})}
               </div>
-              {nFb==="timeout"&&<div style={{textAlign:"center",marginTop:10,fontSize:16,color:"#E24B4A",fontWeight:500}}>{"Time's up!"}</div>}
+              {nFb==="timeout"&&<div style={{textAlign:"center",marginTop:10,fontSize:17,color:"#E24B4A",fontWeight:500}}>{"Time's up!"}</div>}
             </div>
           )}
         </div>
@@ -539,26 +539,26 @@ export default function App() {
 
       {/* ═══ FINAL SCORECARD ═══ */}
       {screen==="final"&&(
-        <div style={{textAlign:"center",padding:"32px 32px",animation:"popIn 0.4s ease"}}>
-          <div style={{fontSize:60,marginBottom:4}}>{"\u{1f3c6}"}</div>
-          <h2 style={{fontSize:22,fontWeight:700,marginBottom:4}}>{appName.trim()}</h2>
-          <p style={{fontSize:16,color:"#888",marginBottom:16}}>Assessment complete</p>
+        <div style={{textAlign:"center",padding:"44px 48px",animation:"popIn 0.4s ease"}}>
+          <div style={{fontSize:80,marginBottom:4}}>{"\u{1f3c6}"}</div>
+          <h2 style={{fontSize:28,fontWeight:700,marginBottom:4}}>{appName.trim()}</h2>
+          <p style={{fontSize:17,color:"#888",marginBottom:16}}>Assessment complete</p>
           <div style={{display:"flex",flexDirection:"column",gap:8,textAlign:"left",marginBottom:20}}>
             {gResults.map(function(r,i){var colors=["#534AB7","#D85A30","#1D9E75","#D4537E"];var traits=["Verbal fluency","Resilience","Processing speed","Quick thinking"];var pct2=r.total>0?Math.round((r.score/r.total)*100):0;return(
               <div key={i} style={{padding:12,borderRadius:12,background:"#f8f7f4",display:"flex",alignItems:"center",gap:10}}>
-                <div style={{width:36,height:36,borderRadius:8,background:GAMES[i].bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:20}}>{GAMES[i].icon}</div>
+                <div style={{width:36,height:36,borderRadius:8,background:GAMES[i].bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:24}}>{GAMES[i].icon}</div>
                 <div style={{flex:1}}>
-                  <div style={{fontSize:14,fontWeight:600,color:colors[i]}}>{traits[i]}</div>
+                  <div style={{fontSize:15,fontWeight:600,color:colors[i]}}>{traits[i]}</div>
                   <div style={{height:5,borderRadius:3,background:"#e5e5e0",marginTop:3}}><div style={{width:pct2+"%",height:"100%",borderRadius:3,background:colors[i]}} /></div>
                 </div>
-                <div style={{fontSize:20,fontWeight:700,color:colors[i]}}>{pct2+"%"}</div>
+                <div style={{fontSize:24,fontWeight:700,color:colors[i]}}>{pct2+"%"}</div>
               </div>
             );})}
           </div>
-          {submitStatus==="sending"&&(<p style={{fontSize:16,color:"#888",marginBottom:12}}>Submitting results...</p>)}
-          {submitStatus==="sent"&&(<p style={{fontSize:16,color:"#1D9E75",fontWeight:600,marginBottom:12}}>Results submitted successfully!</p>)}
-          {submitStatus==="error"&&(<div style={{marginBottom:12}}><p style={{fontSize:16,color:"#E24B4A",fontWeight:600,marginBottom:6}}>Submission failed. Please check your connection.</p><button onClick={function(){submitResults(gResults);}} style={{padding:"6px 16px",borderRadius:8,background:"#fff",border:"1.5px solid #E24B4A",color:"#E24B4A",fontSize:15,fontWeight:500,cursor:"pointer"}}>Retry</button></div>)}
-          <button onClick={function(){setScreen("intro");setGi(0);setGResults([]);setSubmitStatus("idle");}} style={{padding:"10px 24px",borderRadius:10,background:"#fff",border:"2px solid #eee",fontWeight:600,fontSize:16,cursor:"pointer"}}>Retake</button>
+          {submitStatus==="sending"&&(<p style={{fontSize:17,color:"#888",marginBottom:12}}>Submitting results...</p>)}
+          {submitStatus==="sent"&&(<p style={{fontSize:17,color:"#1D9E75",fontWeight:600,marginBottom:12}}>Results submitted successfully!</p>)}
+          {submitStatus==="error"&&(<div style={{marginBottom:12}}><p style={{fontSize:17,color:"#E24B4A",fontWeight:600,marginBottom:6}}>Submission failed. Please check your connection.</p><button onClick={function(){submitResults(gResults);}} style={{padding:"6px 16px",borderRadius:8,background:"#fff",border:"1.5px solid #E24B4A",color:"#E24B4A",fontSize:16,fontWeight:500,cursor:"pointer"}}>Retry</button></div>)}
+          <button onClick={function(){setScreen("intro");setGi(0);setGResults([]);setSubmitStatus("idle");}} style={{padding:"10px 24px",borderRadius:10,background:"#fff",border:"2px solid #eee",fontWeight:600,fontSize:17,cursor:"pointer"}}>Retake</button>
         </div>
       )}
     </div>
